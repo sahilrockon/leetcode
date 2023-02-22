@@ -1,0 +1,58 @@
+import java.util.Hashtable;
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        
+        
+		if(digits==""||digits.isEmpty()){
+		return new ArrayList<String>();	
+		}else{
+			return sahi(digits);
+		} 
+	 }
+	 
+	 static List<String>sahi(String digits){
+		 List<String> l=new LinkedList();
+		 
+		 if(digits.length()==0){
+			l.add("");
+			 
+				return l;
+					 
+				 }
+			 
+	else {
+		Hashtable<Character,String> ht=new Hashtable<Character,String>();
+ht.put('2', "abc");
+ht.put('3', "def");
+ht.put('4', "ghi");
+ht.put('5', "jkl");
+ht.put('6', "mno");
+ht.put('7', "pqrs");
+ht.put('8', "tuv");
+ht.put('9', "wxyz");
+String k=ht.get(digits.charAt(0));
+String ros="";
+
+for(int i=0;i<k.length();++i){
+	int m=0;
+if(i==0){
+ ros=digits.substring(0,i)+digits.substring(i+1);
+
+}
+while(m<sahi(ros).size()){	
+l.add(k.charAt(i)+""+sahi(ros).get(m));
+++m;
+}	
+ 
+
+}
+
+	 
+		 
+
+}
+		
+	 return l;
+	 }
+		 }
+
