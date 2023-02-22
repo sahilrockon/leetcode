@@ -1,0 +1,80 @@
+class Solution {
+    	static List<List<Integer>>li=new ArrayList<List<Integer>>();
+
+    public List<List<String>> solveNQueens(int n) {
+     li.clear();
+        
+    
+   
+    	HashMap<Integer,Integer>hm=new HashMap<Integer,Integer>();
+
+    	chess(n, hm, n);
+    	List<List<String>> lis=new ArrayList<List<String>>();
+	
+StringBuilder sb;
+List<String>st;
+  for(List<Integer> x:li){
+	  st=new ArrayList<String>();
+for(int i=0;i<x.size();++i){
+	sb=new StringBuilder("");
+for(int k=0;k<n;++k){
+if(k==x.get(i)){
+sb.append("Q");	
+}else{
+	sb.append(".");
+}	
+}	
+st.add(sb.toString());	
+}
+lis.add(st);
+	  
+	  
+  } 
+    
+    return lis;}
+ static void chess
+ (int n,HashMap<Integer,Integer>hm,int tr){
+  if(n<=0){
+	 List<Integer>list=new ArrayList<Integer>(); 
+	 for(int i=0;i<tr;++i){
+		list.add(hm.get(i)); 
+	 } 
+	 li.add(list);
+	 
+  }else{
+
+int row=tr-n;	 
+for(int i=0;i<tr;++i){
+boolean flag=true;	
+if(hm.containsValue(i)){
+	continue;
+}
+for(int k=0;k<row;++k){ 
+int va=hm.get(k);
+if(i<va&&k+va==i+row){
+flag=false;
+break;
+}
+if(i>va&&va-k==i-row){
+flag=false;
+break;
+}	
+}
+if(flag){
+hm.put(row,i);
+chess(n-1, hm, tr);
+}
+hm.remove(row);
+flag=true;
+
+
+    }
+  }
+	
+
+
+ }
+     
+        
+    
+}
